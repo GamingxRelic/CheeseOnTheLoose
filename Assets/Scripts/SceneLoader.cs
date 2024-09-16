@@ -7,6 +7,8 @@ public class SceneLoader : MonoBehaviour
 {
     public static SceneLoader instance;
     private static string nextScene;
+    public float loadingProgress;
+    public bool loadingComplete;
     private void Awake()
     {
         if(instance == null) {
@@ -38,26 +40,22 @@ public class SceneLoader : MonoBehaviour
     }
 
     private IEnumerator LoadSceneCoroutine() {
-        // Begin to load the scene
+        // Begin to load the scene in the background
         AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(nextScene);
 
         // Don't switch to the new scene immediately when done
         asyncLoad.allowSceneActivation = false;
 
-        // Get loading screen text
-        TextMeshPro text = GameObject.Find("LoadingSceneText").GetComponent<TextMeshPro>(); 
-
-        // While the scene is loading, set the loading progress text
+        // While the scene is loading
         while (!asyncLoad.isDone)
         {
-            // Output the current loading progress (0 to 1)
-            // text.SetText("Loading progress: " + (asyncLoad.progress * 100) + "%");
+            // Set the loading progress values
+            loadingProgress = asyncLoad.progress;
 
             // Check if the loading is complete (progress is always < 0.9 until the scene is fully loaded)
             if (asyncLoad.progress >= 0.9f)
             {
-                // text.SetText("Press any key to continue...");
-                
+                loadingComplete = true;
                 // Wait for a key press to activate the scene
                 if (Input.anyKeyDown)
                 {

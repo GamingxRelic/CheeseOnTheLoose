@@ -14,8 +14,6 @@ public class PlayerMovement : MonoBehaviour
 
     [Header("Gravity")]
     [SerializeField] private float gravity = 9.8f;
-    // private int groundColliderCount;
-    // [SerializeField] private LayerMask whatIsGround;
 
     [Header("Jumping")]
     [SerializeField] private GroundedCheck groundedCheck;
@@ -56,6 +54,7 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
+    [Tooltip("Applies any movement changes ")]
     private void ApplyMovement() {
         if(!IsGrounded()) {
             movement.y -= gravity * Time.deltaTime;
@@ -64,6 +63,7 @@ public class PlayerMovement : MonoBehaviour
         controller.Move(movement * Time.deltaTime);
     }
 
+    [Tooltip("Returns if the player is on the ground or not")]
     private bool IsGrounded() {
         return groundedCheck.GetColliderCount() > 0; 
     }

@@ -804,7 +804,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3269698408770455140, guid: 2ca0edbfa44d6f44aac7bd3d29ff605c, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.9200003
+      value: 1.057
       objectReference: {fileID: 0}
     - target: {fileID: 3269698408770455140, guid: 2ca0edbfa44d6f44aac7bd3d29ff605c, type: 3}
       propertyPath: m_LocalPosition.z
@@ -837,10 +837,6 @@ PrefabInstance:
     - target: {fileID: 3269698408770455140, guid: 2ca0edbfa44d6f44aac7bd3d29ff605c, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8468189724300618859, guid: 2ca0edbfa44d6f44aac7bd3d29ff605c, type: 3}
-      propertyPath: pushForce
-      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 9081966555568821736, guid: 2ca0edbfa44d6f44aac7bd3d29ff605c, type: 3}
       propertyPath: m_Name
@@ -1958,7 +1954,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: This is a sign to eat your cheese
+  m_text: This is a sign to eat your <color=yellow>cheese</color>
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2100000, guid: e73a58f6e2794ae7b1b7e50b7fb811b0, type: 2}
@@ -2255,7 +2251,7 @@ PrefabInstance:
       objectReference: {fileID: 1559245863}
     - target: {fileID: 1569307349025351757, guid: ae09ee83d5e7f57409fef0577e819185, type: 3}
       propertyPath: m_VersionIndex
-      value: 2213
+      value: 2216
       objectReference: {fileID: 0}
     - target: {fileID: 2000116389357391213, guid: ae09ee83d5e7f57409fef0577e819185, type: 3}
       propertyPath: m_LocalPosition.x
@@ -3403,7 +3399,7 @@ PrefabInstance:
       objectReference: {fileID: 107284271}
     - target: {fileID: 1569307349025351757, guid: ae09ee83d5e7f57409fef0577e819185, type: 3}
       propertyPath: m_VersionIndex
-      value: 2213
+      value: 2216
       objectReference: {fileID: 0}
     - target: {fileID: 2000116389357391213, guid: ae09ee83d5e7f57409fef0577e819185, type: 3}
       propertyPath: m_LocalPosition.x
@@ -4545,7 +4541,7 @@ PrefabInstance:
       objectReference: {fileID: 1838920216}
     - target: {fileID: 1569307349025351757, guid: ae09ee83d5e7f57409fef0577e819185, type: 3}
       propertyPath: m_VersionIndex
-      value: 2213
+      value: 2216
       objectReference: {fileID: 0}
     - target: {fileID: 2000116389357391213, guid: ae09ee83d5e7f57409fef0577e819185, type: 3}
       propertyPath: m_LocalPosition.x
@@ -4598,18 +4594,6 @@ PrefabInstance:
     - target: {fileID: 2601111718381792354, guid: ae09ee83d5e7f57409fef0577e819185, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
       value: 90.24
-      objectReference: {fileID: 0}
-    - target: {fileID: 3225048205171747941, guid: ae09ee83d5e7f57409fef0577e819185, type: 3}
-      propertyPath: m_Color.b
-      value: 0.07329121
-      objectReference: {fileID: 0}
-    - target: {fileID: 3225048205171747941, guid: ae09ee83d5e7f57409fef0577e819185, type: 3}
-      propertyPath: m_Color.g
-      value: 0.07329121
-      objectReference: {fileID: 0}
-    - target: {fileID: 3225048205171747941, guid: ae09ee83d5e7f57409fef0577e819185, type: 3}
-      propertyPath: m_Color.r
-      value: 0.5754717
       objectReference: {fileID: 0}
     - target: {fileID: 4071127801260689043, guid: ae09ee83d5e7f57409fef0577e819185, type: 3}
       propertyPath: m_Name
