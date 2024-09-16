@@ -6,13 +6,14 @@ public class Teleporter : MonoBehaviour
     [SerializeField] private string nextSceneName;
     void OnTriggerEnter(Collider other)
     {
-        if(nextSceneName == "") {
-            Debug.Log("Teleporter Missing Scene Name");
+        if(string.IsNullOrEmpty(nextSceneName)) {
+            Debug.Log("Teleporter - Invalid Next Scene Name");
             return;
         }
 
         if(other.gameObject.CompareTag("Player")) {
-            SceneManager.LoadScene(nextSceneName);
+            SceneLoader sceneLoader = GameObject.Find("SceneLoader").GetComponent<SceneLoader>();
+            sceneLoader.LoadLoadingScene(nextSceneName);
         }
     }
 
