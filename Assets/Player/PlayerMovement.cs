@@ -26,6 +26,7 @@ public class PlayerMovement : MonoBehaviour
     private Vector3 teleportPosition;
     public Vector2 teleportRotation;
 
+
     void Update()
     {
         GetInput(); 
@@ -37,7 +38,6 @@ public class PlayerMovement : MonoBehaviour
     private void FixedUpdate()
     {
         if(isTeleporting) {
-            // transform.SetPositionAndRotation(teleportPosition, teleportRotation);
             transform.position = teleportPosition;
             isTeleporting = false;
         }

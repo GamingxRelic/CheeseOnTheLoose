@@ -16,13 +16,14 @@ public class PlayerCamera : MonoBehaviour
         // Lock the cursor to stay ingame
         Cursor.lockState = CursorLockMode.Locked;   
         Cursor.visible = false;
+
     }
 
     private void Update()
     {
         // Set the mouseX and Y each frame so the camera rotates accordingly. 
-        float mouseX = Input.GetAxisRaw("Mouse X") * mouseSensX; //* Time.deltaTime 
-        float mouseY = Input.GetAxisRaw("Mouse Y") * mouseSensY; //* Time.deltaTime 
+        float mouseX = Input.GetAxisRaw("Mouse X") * mouseSensX; 
+        float mouseY = Input.GetAxisRaw("Mouse Y") * mouseSensY; 
 
         yRot += mouseX;
 
