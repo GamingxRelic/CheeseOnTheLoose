@@ -1,4 +1,5 @@
 using Unity.VisualScripting;
+using UnityEditor.EditorTools;
 using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
@@ -20,13 +21,26 @@ public class PlayerMovement : MonoBehaviour
 
     private Vector3 movement; 
 
+    [Header("Teleporting")]
+    public bool isTeleporting = false;
+    private Vector3 teleportPosition;
+    public Vector2 teleportRotation;
+
     void Update()
     {
         GetInput(); 
         Movement();
         HandleJump();
         ApplyMovement();
+    }
 
+    private void FixedUpdate()
+    {
+        if(isTeleporting) {
+            // transform.SetPositionAndRotation(teleportPosition, teleportRotation);
+            transform.position = teleportPosition;
+            isTeleporting = false;
+        }
     }
 
     private void GetInput() {
@@ -66,6 +80,13 @@ public class PlayerMovement : MonoBehaviour
     [Tooltip("Returns if the player is on the ground or not")]
     private bool IsGrounded() {
         return groundedCheck.GetColliderCount() > 0; 
+    }
+
+    [Tooltip("Used for teleporting the player to a position")]
+    public void TeleportPlayer(Vector3 newPosition, Vector2 newRotation) {
+        teleportPosition = newPosition;
+        teleportRotation = newRotation;
+        isTeleporting = true;
     }
     
 // madison was here 

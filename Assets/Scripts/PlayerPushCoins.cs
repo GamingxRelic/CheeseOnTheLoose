@@ -9,6 +9,8 @@ public class PlayerPushCoins : MonoBehaviour
         PushAwayCoins();
     }
 
+    
+
     private void PushAwayCoins() {
         GameObject[] coins = GameObject.FindGameObjectsWithTag("Coin"); // Get the coins in the scene.
 

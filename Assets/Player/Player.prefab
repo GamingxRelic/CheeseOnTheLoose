@@ -107,6 +107,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mouseSensX: 1
   mouseSensY: 1
+  playerMovement: {fileID: 6814631416250088491}
   playerOrientation: {fileID: 3269698408770455140}
 --- !u!1 &5448937751619950319
 GameObject:
@@ -332,6 +333,7 @@ MonoBehaviour:
   jumpForce: 5
   gravity: 9.8
   groundedCheck: {fileID: 1073766958050663880}
+  isTeleporting: 0
 --- !u!114 &8468189724300618859
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -344,8 +346,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1e0fd4f459d80fe44aea87f428edbf51, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pushForce: 5
-  maxDistance: 5
+  pushForce: 6
+  maxDistance: 7
 --- !u!143 &146306139315177628
 CharacterController:
   m_ObjectHideFlags: 0
