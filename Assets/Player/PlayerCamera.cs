@@ -10,6 +10,10 @@ public class PlayerCamera : MonoBehaviour
     private float xRot, yRot;
     [SerializeField] private Transform playerOrientation;
 
+    [SerializeField] private float fov = 60.0f;
+    [SerializeField] private float zoomFov = 30.0f;
+
+
 
     private void Start()
     {
@@ -30,10 +34,15 @@ public class PlayerCamera : MonoBehaviour
         xRot -= mouseY;
         xRot = Mathf.Clamp(xRot, -90f, 90f);
 
-        
-
         transform.rotation = Quaternion.Euler(xRot, yRot, 0);
         playerOrientation.rotation = Quaternion.Euler(0, yRot, 0);
+
+        if(Input.GetAxisRaw("Fire2") > 0.0f){
+            Camera.main.fieldOfView = zoomFov;
+        }
+        else {
+            Camera.main.fieldOfView = fov;
+        }
 
     }
 

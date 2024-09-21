@@ -4,12 +4,26 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
+    [Header("Player Components")]    
     [SerializeField] private CharacterController controller;
+    [SerializeField] private CapsuleCollider capsuleCollider;
+    [SerializeField] private float standardHeight = 2.0f;
+    [SerializeField] private float crouchHeight = 1.4f;
+    [SerializeField] private HeadCollisionCheck headCollisionCheck;
+
+    [SerializeField] private GameObject mesh; 
 
     [Header("Movement")]
-    [SerializeField] private float moveSpeed = 300f; 
+    [SerializeField] private float walkSpeed = 5f; 
+    [SerializeField] private float sprintSpeed = 7f; 
+    [SerializeField] private float crouchSpeed = 3f; 
     [SerializeField] private float airControlMovementMultiplier = 0.65f;
     [SerializeField] private float jumpForce = 15f;
+
+    private bool isCrouching = false;
+    private bool isSprinting = false;
+
+    private float moveSpeed;
 
     private float horizontalInput, verticalInput;
 
@@ -46,11 +60,55 @@ public class PlayerMovement : MonoBehaviour
     private void GetInput() {
         horizontalInput = Input.GetAxisRaw("Horizontal");
         verticalInput = Input.GetAxisRaw("Vertical");
+
+        if(IsGrounded()) {
+            if(Input.GetKey(KeyCode.LeftControl) || Input.GetKey(KeyCode.C) || (headCollisionCheck.IsHeadColliding() && isCrouching)) { // Crouch when L.ctrl is held or C is held.
+                isCrouching = true;
+                isSprinting = false;
+
+                capsuleCollider.height = crouchHeight;
+                controller.height = crouchHeight;   
+                capsuleCollider.center = new Vector3(0f, (crouchHeight-standardHeight)/2.0f, 0f);
+                mesh.transform.localScale = new Vector3(1.0f, 0.8f, 1.0f);
+
+            } else {
+                isCrouching = false;
+
+                capsuleCollider.height = standardHeight;
+                capsuleCollider.center = Vector3.zero;
+                controller.height = standardHeight;
+                mesh.transform.localScale = new Vector3(1.0f, 1.0f, 1.0f);
+
+            }
+
+
+            
+            if(Input.GetKey(KeyCode.LeftShift) && !isCrouching) { // Toggle sprint when left shift is pressed
+                isSprinting = true;
+            }
+            else {
+                isSprinting = false;
+            }
+        }
+        else {
+            isCrouching = false;
+        }
     }
 
     private void Movement() {
         Vector3 moveDir = transform.forward * verticalInput + transform.right * horizontalInput;
         float moveDirY = movement.y;
+
+        // Set speeds based on movement type [walk, sprint, crouch]
+        if(isCrouching) {
+            moveSpeed = crouchSpeed;
+        }
+        else if(isSprinting) {
+            moveSpeed = sprintSpeed;
+        } 
+        else {
+            moveSpeed = walkSpeed;
+        }
 
         if(IsGrounded()) {
             movement = moveDir.normalized * moveSpeed;
@@ -58,12 +116,14 @@ public class PlayerMovement : MonoBehaviour
         else {
             movement = moveDir.normalized * moveSpeed * airControlMovementMultiplier;
         }
-
+        
         movement.y = moveDirY;
     }
 
     private void HandleJump() {
-        if(Input.GetButtonDown("Jump") && IsGrounded()) {
+        if(Input.GetButtonDown("Jump") && IsGrounded() && !(headCollisionCheck.IsHeadColliding() && isCrouching)) { 
+            // If jump is pressed, the player is grounded, and the head collider is not colliding with anything while the player is crouched,
+            // then set the movement.y delta to jumpForce. 
             movement.y = jumpForce;
         }
     }
