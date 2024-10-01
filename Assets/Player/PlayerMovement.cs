@@ -10,8 +10,9 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float standardHeight = 2.0f;
     [SerializeField] private float crouchHeight = 1.4f;
     [SerializeField] private HeadCollisionCheck headCollisionCheck;
-
     [SerializeField] private GameObject mesh; 
+
+    public static GameObject instance;
 
     [Header("Movement")]
     [SerializeField] private float walkSpeed = 5f; 
@@ -40,7 +41,12 @@ public class PlayerMovement : MonoBehaviour
     private Vector3 teleportPosition;
     public Vector2 teleportRotation;
 
-
+    private void Start()
+    {
+        if(instance == null) {
+            instance = gameObject;
+        }
+    }
     void Update()
     {
         GetInput(); 

@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerCamera : MonoBehaviour
+public class oldPlayerCamera : MonoBehaviour
 {
     [SerializeField] private float mouseSensX, mouseSensY;
     [SerializeField] private PlayerMovement playerMovement;
